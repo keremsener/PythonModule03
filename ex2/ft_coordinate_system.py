@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 import math
 
+
 def get_player_pos() -> tuple:
     while True:
         text = input("Enter new coordinates as floats in format 'x,y,z': ")
         coordinate = text.split(",")
-        
+
         if len(coordinate) != 3:
             print("Invalid syntax")
             continue
-            
+
         error_found = False
         for item in coordinate:
             try:
@@ -18,12 +19,13 @@ def get_player_pos() -> tuple:
                 print(f"Error on parameter '{item}': {e}")
                 error_found = True
                 break
-                
+
         if error_found:
             continue
-            
+
         return (float(coordinate[0]), float(coordinate[1]),
                 float(coordinate[2]))
+
 
 if __name__ == "__main__":
     print("=== Game Coordinate System ===\n")
