@@ -1,21 +1,29 @@
 #!/usr/bin/env python3
 import math
 
-
 def get_player_pos() -> tuple:
-    coordinate = (0, 0, 0)
     while True:
-        try:
-            text = input("Enter new coordinates as floats in format 'x,y,z': ")
-            try:
-                coordinate = text.split(",")
-            except ValueError as e:
-                print(e)
-            return (float(coordinate[0]), float(coordinate[1]),
-                    float(coordinate[2]))
-        except ValueError:
+        text = input("Enter new coordinates as floats in format 'x,y,z': ")
+        coordinate = text.split(",")
+        
+        if len(coordinate) != 3:
             print("Invalid syntax")
-
+            continue
+            
+        error_found = False
+        for item in coordinate:
+            try:
+                float(item)
+            except ValueError as e:
+                print(f"Error on parameter '{item}': {e}")
+                error_found = True
+                break
+                
+        if error_found:
+            continue
+            
+        return (float(coordinate[0]), float(coordinate[1]),
+                float(coordinate[2]))
 
 if __name__ == "__main__":
     print("=== Game Coordinate System ===\n")
@@ -30,7 +38,7 @@ if __name__ == "__main__":
                          (player_pos[2] - 0)**2)
 
     print("Distance to center:", round(distance, 4))
-    print("Get a second of coordinates")
+    print("\nGet a second set of coordinates")
     second_pos = get_player_pos()
     second_distance = math.sqrt((player_pos[0] - second_pos[0])**2 +
                                 (player_pos[1] - second_pos[1])**2 +
