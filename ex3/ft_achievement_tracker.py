@@ -43,12 +43,22 @@ class control:
                     exclusive_set = exclusive_set.difference(self.array[j])
 
             if not exclusive_set:
-                print(f"{current_player_name} only has: ❌")
+                print(f"Only {current_player_name} has: set()")
             else:
-                print(f"{current_player_name} only has: {exclusive_set}")
+                print(f"Only {current_player_name} has: {exclusive_set}")
+    
+    def missing_control(self):
+        total = self.all_distinct_control()
+        for i in range(len(self.array)):
+            current_player_set = self.array[i]
+            current_player_name = self.name[i]
 
+            missing_set = total.difference(current_player_set)
+
+            print(f"{current_player_name} is missing: {missing_set}")
 
 if __name__ == "__main__":
+    print("=== Achievement Tracker System ===")
     i = 0
     player_name = ["Alice", "Bob", "Charlie", "Dylan"]
     player_achievements = ["Alice", "Bob", "Charlie", "Dylan"]
@@ -62,3 +72,5 @@ if __name__ == "__main__":
     my_control.common_control()
     print()
     my_control.exclusive_control()
+    print()
+    my_control.missing_control()
