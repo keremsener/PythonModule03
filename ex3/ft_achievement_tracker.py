@@ -10,22 +10,42 @@ achievements_pool = [
 ]
 
 
-def gen_player_achievements() -> list:
+def gen_player_achievements() -> set:
     random_numb = random.randint(4, 8)
     player_achievement = set(random.sample(achievements_pool, random_numb))
     return (player_achievement)
 
 
 class control:
-    def __init__(self, array):
+    def __init__(self, array, name):
         self.array = array
+        self.name = name
 
     def common_control(self):
-        common_array = set.intersection(self.array)
+        common_array = set.intersection(*self.array)
         if not common_array:
             print("Common achievements: ❌")
         else:
-            print(f"Common achievements: {self.array}")
+            print(f"Common achievements: {common_array}")
+
+    def all_distinct_control(self):
+        return set.union(*self.array)
+
+    def exclusive_control(self):
+        for i in range(len(self.array)):
+            current_player_set = self.array[i]
+            current_player_name = self.name[i]
+
+            exclusive_set = current_player_set.copy()
+
+            for j in range(len(self.array)):
+                if i != j:
+                    exclusive_set = exclusive_set.difference(self.array[j])
+
+            if not exclusive_set:
+                print(f"{current_player_name} only has: ❌")
+            else:
+                print(f"{current_player_name} only has: {exclusive_set}")
 
 
 if __name__ == "__main__":
@@ -35,8 +55,10 @@ if __name__ == "__main__":
     for i in 0, 1, 2, 3:
         player_achievements[i] = gen_player_achievements()
         print(f"Player {player_name[i]}: {player_achievements[i]}")
-        i += 1
-    print(player_achievements[0])
-    print("\nAll distinct achievements:", achievements_pool)
-    # control.common_control()
 
+    my_control = control(player_achievements, player_name)
+
+    print("\nAll distinct achievements:", my_control.all_distinct_control())
+    my_control.common_control()
+    print()
+    my_control.exclusive_control()
