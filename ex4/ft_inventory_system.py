@@ -6,6 +6,9 @@ if __name__ ==  "__main__":
     i = 1
     items = {}
     while i < len(sys.argv):
-        items = sys.argv[i].split(":")
+        if len(parts) < 2:
+            print (f"Error invalid parameter '{parts[0]}'")
+        else:
+            parts = sys.argv[i].split(":")
+        print(parts)
         i += 1
-    print(items)
