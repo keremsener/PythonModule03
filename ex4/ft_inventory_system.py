@@ -7,10 +7,10 @@ class InventorError(Exception):
         super().__init__(name)
 
 
-def items__(arg):
+def parse_item(arg):
     parts = arg.split(":")
     if len(parts) != 2:
-        raise InventorError(f"Error invalid parameter '{arg}'")    
+        raise InventorError(f"Error invalid parameter '{arg}'")
     return parts[0], parts[1]
 
 
@@ -34,7 +34,8 @@ def least_abundant(items):
     print(f"Item least abundant: {least_name} with quantity {least_amount}")
 
 
-def show(items, total_amount):
+def show(items):
+    total_amount = sum(items.values())
     print(f"Got inventory: {items}")
     print(f"Item list: {list(items.keys())}")
     print(f"Total quantity of the {len(items)} items: {total_amount}")
@@ -51,7 +52,7 @@ if __name__ == "__main__":
     items = {}
     while i < len(sys.argv):
         try:
-            name, amount = items__(sys.argv[i])
+            name, amount = parse_item(sys.argv[i])
             if name in items:
                 print(f"Redundant item '{name}' - discarding")
             else:
@@ -62,8 +63,7 @@ if __name__ == "__main__":
         except InventorError as e:
             print(e)
         i += 1
-    total_amount = sum(items.values())
-    show(items, total_amount)
+    show(items)
     most_abundant(items)
     least_abundant(items)
     items.update({"magic_item": 1})
