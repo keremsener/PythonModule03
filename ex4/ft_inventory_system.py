@@ -66,3 +66,5 @@ if __name__ == "__main__":
     show(items, total_amount)
     most_abundant(items)
     least_abundant(items)
+    items.update({"magic_item": 1})
+    print(f"Updated inventory: {items}")
