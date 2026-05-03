@@ -16,7 +16,7 @@ def consume_event(array: list)-> typing.Generator[tuple, None, None]:
         array.remove(current_action)
         yield current_action
 
-if __name__ == "__main__":
+def manage_events():
     print("=== Game Data Stream Processor ===")
     player = []
     counter = 0
@@ -33,3 +33,6 @@ if __name__ == "__main__":
     for consumed in consume_event(player):
         print(f"Got event from list: {consumed}")
         print(f"Remains in list: {player}")
+
+if __name__ == "__main__":
+    manage_events()
