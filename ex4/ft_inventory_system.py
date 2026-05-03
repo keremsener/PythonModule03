@@ -15,8 +15,12 @@ def parse_item(arg):
 
 
 def most_abundant(items):
-    most_amount = list(items.values())[0]
-    most_name = list(items.keys())[0]
+    try:
+        most_amount = list(items.values())[0]
+        most_name = list(items.keys())[0]
+    except IndexError:
+        print("Enter an Arg!")
+        exit()
     for name, amount in items.items():
         if (amount > most_amount):
             most_amount = amount
