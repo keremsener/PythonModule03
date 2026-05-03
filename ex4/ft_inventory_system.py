@@ -20,7 +20,7 @@ def most_abundant(items):
         most_name = list(items.keys())[0]
     except IndexError:
         print("Enter an Arg!")
-        exit()
+        sys.exit()
     for name, amount in items.items():
         if (amount > most_amount):
             most_amount = amount
