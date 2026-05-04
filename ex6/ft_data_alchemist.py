@@ -25,12 +25,25 @@ def generate_name():
         i += 1
     return names, OnlyBigLetter
 
+def score(player_list):
+    players = {}
+    i = 0
+    while player_list:
+        random_player = random.choice(player_list)
+        random_score = random.randint(100,500)
+        players[random_player] = random_score
+        player_list.remove(random_player)
+        i += 1
+    return players
 def show():
     names = generate_name()
     capitalized_names = capitalized_list(names[0])
+    scores = score(capitalized_names)
+
     print(f"Initial list of players: {names[0]}")
     print(f"New list with all names capitalized: {capitalized_names}")
     print(f"New list of capitalized names only: {names[1]}")
+    print(f"\nScore dict: {scores}")
 
 if __name__ == "__main__":
     print("=== Game Data Alchemist ===")
