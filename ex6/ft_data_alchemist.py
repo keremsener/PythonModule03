@@ -27,13 +27,9 @@ def generate_name():
 
 def score(player_list):
     players = {}
-    i = 0
-    while player_list:
-        random_player = random.choice(player_list)
+    for player in player_list:
         random_score = random.randint(100,500)
-        players[random_player] = random_score
-        player_list.remove(random_player)
-        i += 1
+        players[player] = random_score
     return players
 def show():
     names = generate_name()
