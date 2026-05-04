@@ -9,21 +9,15 @@ def capitalized_list(names_list) -> list:
         i += 1
     return (names_list)
 
-def generate_name():
+
+def generate_name() -> tuple[list[str], list[str]]:
     names = ['alice', 'bob', 'charlie', 'dylan', 'emma', 'gregory', 'john', 'kevin', 'liam']
     BigLetter = True
     SmallLetter = False
-    OnlyBigLetter = []
-    i = 0
-    for name in names:
-        random_numb = random.randint(0, 1)
-        if random_numb == BigLetter:
-            names[i] = names[i].capitalize()
-            OnlyBigLetter.append(names[i])
-        else:
-            names[i] = names[i].lower()
-        i += 1
-    return names, OnlyBigLetter
+
+    new_names = [name.capitalize() if random.randint(0, 1) == BigLetter else name.lower() for name in names]
+    OnlyBigLetter = [name for name in new_names if name.istitle()]
+    return new_names, OnlyBigLetter
 
 def score(player_list):
     players = {}
@@ -31,6 +25,7 @@ def score(player_list):
         random_score = random.randint(100,500)
         players[player] = random_score
     return players
+
 def show():
     names = generate_name()
     capitalized_names = capitalized_list(names[0])
@@ -40,6 +35,7 @@ def show():
     print(f"New list with all names capitalized: {capitalized_names}")
     print(f"New list of capitalized names only: {names[1]}")
     print(f"\nScore dict: {scores}")
+
 
 if __name__ == "__main__":
     print("=== Game Data Alchemist ===")
