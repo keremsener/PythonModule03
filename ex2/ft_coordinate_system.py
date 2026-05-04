@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import math
 
-
 def get_player_pos() -> tuple:
     while True:
         text = input("Enter new coordinates as floats in format 'x,y,z': ")
@@ -27,8 +26,7 @@ def get_player_pos() -> tuple:
                 float(coordinate[2]))
 
 
-if __name__ == "__main__":
-    print("=== Game Coordinate System ===\n")
+def coordinate_sytem():
     print("Get a first set of coordinates")
     array = []
     player_pos = get_player_pos()
@@ -47,3 +45,8 @@ if __name__ == "__main__":
                                 (player_pos[2] - second_pos[2])**2)
     text = "Distance between the 2 sets of coordinates:"
     print(f"{text} {round(second_distance, 4)}")
+
+
+if __name__ == "__main__":
+    print("=== Game Coordinate System ===\n")
+    coordinate_sytem()

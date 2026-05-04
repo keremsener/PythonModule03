@@ -49,9 +49,7 @@ def show(items:dict[str, int]) -> None:
         rounded_percentage = round(percentage, 1)
         print(f"Item {name} represents {rounded_percentage}%")
 
-
-if __name__ == "__main__":
-    print("=== Inventory System Analysis ===")
+def inventory_system():
     i = 1
     items = {}
     while i < len(sys.argv):
@@ -72,3 +70,8 @@ if __name__ == "__main__":
     least_abundant(items)
     items.update({"magic_item": 1})
     print(f"Updated inventory: {items}")
+
+
+if __name__ == "__main__":
+    print("=== Inventory System Analysis ===")
+    inventory_system()

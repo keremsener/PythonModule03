@@ -24,9 +24,9 @@ class control:
     def common_control(self):
         common_array = set.intersection(*self.array)
         if not common_array:
-            print("Common achievements: ❌")
+            print("\nCommon achievements: ❌")
         else:
-            print(f"Common achievements: {common_array}")
+            print(f"\nCommon achievements: {common_array}")
 
     def all_distinct_control(self):
         return set.union(*self.array)
@@ -57,8 +57,7 @@ class control:
 
             print(f"{current_player_name} is missing: {missing_set}")
 
-if __name__ == "__main__":
-    print("=== Achievement Tracker System ===")
+def achievement_tracker():
     i = 0
     player_name = ["Alice", "Bob", "Charlie", "Dylan"]
     player_achievements = ["Alice", "Bob", "Charlie", "Dylan"]
@@ -74,3 +73,8 @@ if __name__ == "__main__":
     my_control.exclusive_control()
     print()
     my_control.missing_control()
+
+
+if __name__ == "__main__":
+    print("=== Achievement Tracker System ===")
+    achievement_tracker()

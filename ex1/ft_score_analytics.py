@@ -1,7 +1,6 @@
 import sys
 
-if __name__ == "__main__":
-    print("=== Player Score Analytics ===")
+def score_analytics():
     array = []
     i = 1
     total_arg = len(sys.argv) - 1
@@ -23,3 +22,8 @@ if __name__ == "__main__":
         print("High score:", max(array))
         print("Low score:", min(array))
         print("Score range:",  max(array) - min(array))
+
+
+if __name__ == "__main__":
+    print("=== Player Score Analytics ===")
+    score_analytics()
