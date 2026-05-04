@@ -16,7 +16,7 @@ def gen_player_achievements() -> set:
     return (player_achievement)
 
 
-class control:
+class Control:
     def __init__(self, array, name):
         self.array = array
         self.name = name
@@ -41,17 +41,13 @@ class control:
             for j in range(len(self.array)):
                 if i != j:
                     exclusive_set = exclusive_set.difference(self.array[j])
+            print(f"Only {current_player_name} has: {exclusive_set}")
 
-            if not exclusive_set:
-                print(f"Only {current_player_name} has: set()")
-            else:
-                print(f"Only {current_player_name} has: {exclusive_set}")
-    
     def missing_control(self):
         total = self.all_distinct_control()
-        for i in range(len(self.array)):
-            current_player_set = self.array[i]
-            current_player_name = self.name[i]
+        for player in self.array:
+            current_player_set = player
+            current_player_name = player
 
             missing_set = total.difference(current_player_set)
 
@@ -65,7 +61,7 @@ def achievement_tracker():
         player_achievements[i] = gen_player_achievements()
         print(f"Player {player_name[i]}: {player_achievements[i]}")
 
-    my_control = control(player_achievements, player_name)
+    my_control = Control(player_achievements, player_name)
 
     print("\nAll distinct achievements:", my_control.all_distinct_control())
     my_control.common_control()
