@@ -30,17 +30,33 @@ def average(scores:dict) -> float:
     result = sum(scores.values()) / len(scores)
     return (round(result, 2))
 
+def high_score(player_scores: dict) -> dict:
+    players = {}
+    temp_scores = player_scores.copy()
+    
+    for _ in range(5):
+        if not temp_scores:
+            break
+
+        best_player = max(temp_scores, key=temp_scores.get)
+        players[best_player] = temp_scores[best_player]
+        temp_scores.pop(best_player)
+        
+    return players
+
 def show():
     names = generate_name()
     capitalized_names = capitalized_list(names[0])
     scores = score(capitalized_names)
     average_score = average(scores)
+    high_score_list = high_score(scores)
 
     print(f"Initial list of players: {names[0]}")
     print(f"New list with all names capitalized: {capitalized_names}")
     print(f"New list of capitalized names only: {names[1]}")
     print(f"\nScore dict: {scores}")
     print(f"Score average is {average_score}")
+    print(f"High scores: {high_score_list}")
 
 
 if __name__ == "__main__":
