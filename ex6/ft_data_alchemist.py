@@ -26,15 +26,21 @@ def score(player_list):
         players[player] = random_score
     return players
 
+def average(scores:dict) -> float:
+    result = sum(scores.values()) / len(scores)
+    return (round(result, 2))
+
 def show():
     names = generate_name()
     capitalized_names = capitalized_list(names[0])
     scores = score(capitalized_names)
+    average_score = average(scores)
 
     print(f"Initial list of players: {names[0]}")
     print(f"New list with all names capitalized: {capitalized_names}")
     print(f"New list of capitalized names only: {names[1]}")
     print(f"\nScore dict: {scores}")
+    print(f"Score average is {average_score}")
 
 
 if __name__ == "__main__":
