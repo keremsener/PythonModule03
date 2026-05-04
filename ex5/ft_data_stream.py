@@ -10,7 +10,7 @@ def gen_event() -> typing.Generator[tuple, None, None]:
         action = random.choice(actions)
         yield(name, action)
 
-def consume_event(array: list)-> typing.Generator[tuple, None, None]: 
+def consume_event(array: list)-> typing.Generator[tuple, None, None]:
     while array:
         current_action = random.choice(array)
         array.remove(current_action)

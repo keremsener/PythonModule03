@@ -3,18 +3,18 @@ import sys
 
 
 class InventorError(Exception):
-    def __init__(self, name):
+    def __init__(self, name:str) -> None:
         super().__init__(name)
 
 
-def parse_item(arg):
+def parse_item(arg:str) -> tuple[str, str]:
     parts = arg.split(":")
     if len(parts) != 2:
         raise InventorError(f"Error invalid parameter '{arg}'")
     return parts[0], parts[1]
 
 
-def most_abundant(items):
+def most_abundant(items:dict[str, int]) -> None:
     try:
         most_amount = list(items.values())[0]
         most_name = list(items.keys())[0]
@@ -28,7 +28,7 @@ def most_abundant(items):
     print(f"Item most abundant: {most_name} with quantity {most_amount}")
 
 
-def least_abundant(items):
+def least_abundant(items:dict[str, int]) -> None:
     least_amount = list(items.values())[0]
     least_name = list(items.keys())[0]
     for name, amount in items.items():
@@ -38,7 +38,7 @@ def least_abundant(items):
     print(f"Item least abundant: {least_name} with quantity {least_amount}")
 
 
-def show(items):
+def show(items:dict[str, int]) -> None:
     total_amount = sum(items.values())
     print(f"Got inventory: {items}")
     print(f"Item list: {list(items.keys())}")
