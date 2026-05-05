@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import sys
 
-
 class InventorError(Exception):
     def __init__(self, name: str) -> None:
         super().__init__(name)
@@ -50,9 +49,9 @@ def show(items: dict[str, int]) -> None:
         print(f"Item {name} represents {rounded_percentage}%")
 
 
-def inventory_system():
+def inventory_system() -> None:
     i = 1
-    items = {}
+    items: dict[str, int] = {}
     while i < len(sys.argv):
         try:
             name, amount = parse_item(sys.argv[i])

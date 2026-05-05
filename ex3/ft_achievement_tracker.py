@@ -10,28 +10,28 @@ achievements_pool = [
 ]
 
 
-def gen_player_achievements() -> set:
+def gen_player_achievements() -> set[str]:
     random_numb = random.randint(4, 8)
     player_achievement = set(random.sample(achievements_pool, random_numb))
     return (player_achievement)
 
 
 class Control:
-    def __init__(self, array, name):
+    def __init__(self, array: list[set[str]], name: list[str]) -> None:
         self.array = array
         self.name = name
 
-    def common_control(self):
+    def common_control(self) -> None:
         common_array = set.intersection(*self.array)
         if not common_array:
             print("\nCommon achievements: ❌")
         else:
             print(f"\nCommon achievements: {common_array}")
 
-    def all_distinct_control(self):
+    def all_distinct_control(self) -> set[str]:
         return set.union(*self.array)
 
-    def exclusive_control(self):
+    def exclusive_control(self) -> None:
         for i in range(len(self.array)):
             current_player_set = self.array[i]
             current_player_name = self.name[i]
@@ -43,22 +43,20 @@ class Control:
                     exclusive_set = exclusive_set.difference(self.array[j])
             print(f"Only {current_player_name} has: {exclusive_set}")
 
-    def missing_control(self):
+    def missing_control(self) -> None:
         total = self.all_distinct_control()
-        for player in self.array:
-            current_player_set = player
-            current_player_name = player
-
+        for i in range(len(self.array)):
+            current_player_set = self.array[i]
+            current_player_name = self.name[i]
             missing_set = total.difference(current_player_set)
-
             print(f"{current_player_name} is missing: {missing_set}")
 
 
-def achievement_tracker():
+def achievement_tracker() -> None:
     i = 0
     player_name = ["Alice", "Bob", "Charlie", "Dylan"]
-    player_achievements = ["Alice", "Bob", "Charlie", "Dylan"]
-    for i in 0, 1, 2, 3:
+    player_achievements: list[set[str]] = [set() for _ in range(4)]
+    for i in range(4):
         player_achievements[i] = gen_player_achievements()
         print(f"Player {player_name[i]}: {player_achievements[i]}")
 

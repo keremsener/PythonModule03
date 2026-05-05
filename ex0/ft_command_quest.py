@@ -1,7 +1,7 @@
 import sys
 
 
-def command_quest():
+def command_quest() -> None:
     total_arg = len(sys.argv)
     print(f"Program name: {sys.argv[0]}")
     if total_arg <= 1:

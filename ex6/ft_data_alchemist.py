@@ -3,7 +3,7 @@
 import random
 
 
-def capitalized_list(names_list) -> list:
+def capitalized_list(names_list: list[str]) -> list[str]:
     return [name.capitalize() for name in names_list]
 
 
@@ -18,11 +18,11 @@ def generate_name() -> tuple[list[str], list[str]]:
     return new_names, OnlyBigLetter
 
 
-def score(player_list):
+def score(player_list: list[str]) -> dict[str, int]:
     return {player: random.randint(100, 500) for player in player_list}
 
 
-def average(scores: dict) -> float:
+def average(scores: dict[str, int]) -> float:
     result = sum(scores.values()) / len(scores)
     return (round(result, 2))
 
@@ -32,7 +32,7 @@ def high_score(player_scores: dict[str, int], avg: float) -> dict[str, int]:
             in player_scores.items() if score > avg}
 
 
-def show():
+def show() -> None:
     names = generate_name()
     capitalized_names = capitalized_list(names[0])
     scores = score(capitalized_names)

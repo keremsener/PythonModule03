@@ -2,7 +2,7 @@
 import math
 
 
-def get_player_pos() -> tuple:
+def get_player_pos() -> tuple[float, float, float]:
     while True:
         text = input("Enter new coordinates as floats in format 'x,y,z': ")
         coordinate = text.split(",")
@@ -27,9 +27,9 @@ def get_player_pos() -> tuple:
                 float(coordinate[2]))
 
 
-def coordinate_sytem():
+def coordinate_system() -> None:
     print("Get a first set of coordinates")
-    array = []
+    array: list[tuple[float, float, float]] = []
     player_pos = get_player_pos()
     array.append(player_pos)
     print(f"Got a first tuple: {player_pos}")
@@ -50,4 +50,4 @@ def coordinate_sytem():
 
 if __name__ == "__main__":
     print("=== Game Coordinate System ===\n")
-    coordinate_sytem()
+    coordinate_system()

@@ -1,8 +1,8 @@
 import sys
 
 
-def score_analytics():
-    array = []
+def score_analytics() -> None:
+    array: list[int] = []
     i = 1
     total_arg = len(sys.argv) - 1
     while i <= total_arg:
