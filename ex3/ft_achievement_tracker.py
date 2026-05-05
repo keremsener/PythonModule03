@@ -53,6 +53,7 @@ class Control:
 
             print(f"{current_player_name} is missing: {missing_set}")
 
+
 def achievement_tracker():
     i = 0
     player_name = ["Alice", "Bob", "Charlie", "Dylan"]

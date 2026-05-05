@@ -2,27 +2,34 @@
 
 import random
 
+
 def capitalized_list(names_list) -> list:
     return [name.capitalize() for name in names_list]
 
+
 def generate_name() -> tuple[list[str], list[str]]:
-    names = ['alice', 'bob', 'charlie', 'dylan', 'emma', 'gregory', 'john', 'kevin', 'liam']
+    names = ['alice', 'bob', 'charlie', 'dylan',
+             'emma', 'gregory', 'john', 'kevin', 'liam']
     BigLetter = True
 
-    new_names = [name.capitalize() if random.randint(0, 1) == BigLetter else name.lower() for name in names]
+    new_names = [name.capitalize() if random.randint(
+        0, 1) == BigLetter else name.lower() for name in names]
     OnlyBigLetter = [name for name in new_names if name.istitle()]
     return new_names, OnlyBigLetter
 
-def score(player_list):
-    return {player: random.randint(100,500) for player in player_list}
 
-def average(scores:dict) -> float:
+def score(player_list):
+    return {player: random.randint(100, 500) for player in player_list}
+
+
+def average(scores: dict) -> float:
     result = sum(scores.values()) / len(scores)
     return (round(result, 2))
 
 
 def high_score(player_scores: dict[str, int], avg: float) -> dict[str, int]:
-    return {player: score for player, score in player_scores.items() if score > avg}
+    return {player: score for player, score
+            in player_scores.items() if score > avg}
 
 
 def show():

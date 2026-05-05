@@ -1,5 +1,6 @@
 import sys
 
+
 def command_quest():
     total_arg = len(sys.argv)
     print(f"Program name: {sys.argv[0]}")

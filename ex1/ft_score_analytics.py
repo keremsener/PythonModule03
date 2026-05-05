@@ -1,5 +1,6 @@
 import sys
 
+
 def score_analytics():
     array = []
     i = 1
