@@ -13,7 +13,9 @@ def gen_event() -> typing.Generator[tuple[str, str], None, None]:
         yield (name, action)
 
 
-def consume_event(array: list[tuple[str, str]]) -> typing.Generator[tuple[str, str], None, None]:
+def consume_event(
+    array: list[tuple[str, str]]
+) -> typing.Generator[tuple[str, str], None, None]:
     while array:
         current_action = random.choice(array)
         array.remove(current_action)
@@ -25,6 +27,7 @@ def manage_events() -> None:
     player: list[tuple[str, str]] = []
     counter = 0
     event_stream = gen_event()
+
     for i in range(1000):
         current_event = next(event_stream)
         if counter != 10:
@@ -32,7 +35,8 @@ def manage_events() -> None:
             player.append(new_list_10_event)
             counter += 1
         print(
-            f"Event {i}: Player {current_event[0]} did action {current_event[1]}")
+            f"Event {i}: Player {current_event[0]}\
+ did action {current_event[1]}")
     print("Built list of 10 events:", player)
 
     for consumed in consume_event(player):
